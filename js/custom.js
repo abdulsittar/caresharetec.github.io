@@ -5,13 +5,6 @@ var customScripts = {
   var items = $('.items', portfolio); 
   var filters = $('.filters li a', portfolio); 
 
-  items.imagesLoaded(function() {
-    items.isotope({
-      itemSelector: '.item',
-      layoutMode: 'fitRows',
-      transitionDuration: '0.7s'
-    });
-  });
   
   filters.click(function(){
     var el = $(this);
@@ -22,49 +15,8 @@ var customScripts = {
     return false;
   });            
   },
-  fancybox: function () {
-      // fancybox
-      $(".fancybox").fancybox();
-  },
   onePageNav: function () {
 
-      $('#mainNav').onePageNav({
-          currentClass: 'active',
-          changeHash: false,
-          scrollSpeed: 950,
-          scrollThreshold: 0.2,
-          filter: '',
-          easing: 'swing',
-          begin: function () {
-              //I get fired when the animation is starting
-          },
-          end: function () {
-                 //I get fired when the animation is ending
-      if(!$('#main-nav ul li:first-child').hasClass('active')){
-        $('.header').addClass('iconLogo');
-      }else{
-          $('.header').removeClass('iconLogo');
-      }
-      
-          },
-          scrollChange: function ($currentListItem) {
-              //I get fired when you enter a section and I pass the list item of the section
-      if(!$('#main-nav ul li:first-child').hasClass('active')){
-        $('.header').addClass('addBg');
-      }else{
-          $('.header').removeClass('addBg');
-      }
-    }
-      });
-  
-  $("a[href='#top']").click(function () {
-              $("html, body").animate({ scrollTop: 0 }, "slow");
-              return false;
-          });
-    $("a[href='#basics']").click(function () {
-              $("html, body").animate({ scrollTop: $('#services').offset().top - 75 }, "slow"); 
-              return false;
-          });
   }, 
   owlSlider: function () {
       var owl = $("#owl-demo");
@@ -97,13 +49,7 @@ waySlide: function(){
       }, 100);
   },
   init: function () {
-      customScripts.onePageNav();
-      customScripts.profile();
-      customScripts.fancybox(); 
-      customScripts.owlSlider();
-  customScripts.waySlide();
-  customScripts.fitText();
-      customScripts.bannerHeight();
+  
   }
 }
 $('document').ready(function () {
