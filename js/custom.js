@@ -1,59 +1,52 @@
 
-var customScripts = {
-  profile: function () {
-      var portfolio = $('#portfolio');
-  var items = $('.items', portfolio); 
-  var filters = $('.filters li a', portfolio); 
-
+(function ($) {
   
-  filters.click(function(){
-    var el = $(this);
-    filters.removeClass('active');
-    el.addClass('active');
-    var selector = el.attr('data-filter');
-    items.isotope({ filter: selector });
-    return false;
-  });            
-  },
-  onePageNav: function () {
+  "use strict";
 
-  }, 
-  owlSlider: function () {
-      var owl = $("#owl-demo");
-      owl.owlCarousel();
-      // Custom Navigation Events
-      $(".next").click(function () {
-          owl.trigger('owl.next');
-      })
-      $(".prev").click(function () {
-          owl.trigger('owl.prev');
-      })
-  },
-  bannerHeight: function () {
-      var bHeight = $(".banner-container").height();
-      $('#da-slider').height(bHeight);
-      $(window).resize(function () {
-          var bHeight = $(".banner-container").height();
-          $('#da-slider').height(bHeight);
-      });
-  },
-waySlide: function(){
-      /* Waypoints Animations
-     ------------------------------------------------------ */		   			  
-   
-                  
-  },
-  fitText: function(){			  
-      setTimeout(function() {			
-      $('h1.responsive-headline').fitText(1.2, { minFontSize: '16px', maxFontSize: '30px' });			
-      }, 100);
-  },
-  init: function () {
+    // MENU
+    $('.navbar-collapse a').on('click',function(){
+      $(".navbar-collapse").collapse('hide');
+    });
+    
+    // CUSTOM LINK
+    $('.smoothscroll').click(function(){
+      var el = $(this).attr('href');
+      var elWrapped = $(el);
+      var header_height = $('.navbar').height();
   
-  }
-}
-$('document').ready(function () {
-  customScripts.init();
-});
+      scrollToDiv(elWrapped,header_height);
+      return false;
+  
+      function scrollToDiv(element,navheight){
+        var offset = element.offset();
+        var offsetTop = offset.top;
+        var totalScroll = offsetTop-0;
+  
+        $('body,html').animate({
+        scrollTop: totalScroll
+        }, 300);
+      }
+    });
+
+    $('.owl-carousel').owlCarousel({
+        center: true,
+        loop: true,
+        margin: 30,
+        autoplay: true,
+        responsiveClass: true,
+        responsive:{
+            0:{
+                items: 2,
+            },
+            767:{
+                items: 3,
+            },
+            1200:{
+                items: 4,
+            }
+        }
+    });
+  
+  })(window.jQuery);
 
 
