@@ -24,7 +24,7 @@ body {
 	-moz-transition: all 0.3s linear;
 	-o-transition: all 0.3s linear;
 }
-@media (max-width:360px){
+@media (max-width:720px){
 
 	.hero-text {
 		color: #676e73;
